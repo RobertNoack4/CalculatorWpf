@@ -20,7 +20,7 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        double lastNumber, result;
+        double lastNumber = 0, result, newNumber;
         SelectedOperator selectedOperator;
         public MainWindow()
         {
@@ -33,7 +33,6 @@ namespace Calculator
 
         private void Btn_equal_Click(object sender, RoutedEventArgs e)
         {
-            double newNumber;
             if (double.TryParse(lb_result.Content.ToString(), out newNumber))
             {
                 switch(selectedOperator)
@@ -51,17 +50,30 @@ namespace Calculator
                         result = SimpleMath.Multiply(lastNumber, newNumber);
                         break;
                 }
-
+                lastNumber = 0;
                 lb_result.Content = result.ToString();
             }
         }
 
         private void Btn_percent_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(lb_result.Content.ToString(), out lastNumber))
+            if(lastNumber == 0)
             {
-                lastNumber = lastNumber / 100;
-                ChangeResultLabel(lastNumber.ToString());
+                if (double.TryParse(lb_result.Content.ToString(), out lastNumber))
+                {
+                    lastNumber = lastNumber / 100;
+                    ChangeResultLabel(lastNumber.ToString());
+                }
+            }
+            else
+            {
+                double percent;
+
+                if(double.TryParse(lb_result.Content.ToString(), out percent))
+                {
+                    percent = percent / 100 * lastNumber;
+                    lb_result.Content = percent.ToString();
+                }
             }
         }
 
