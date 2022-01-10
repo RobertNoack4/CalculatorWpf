@@ -21,6 +21,7 @@ namespace Calculator
     public partial class MainWindow : Window
     {
         double lastNumber, result;
+        SelectedOperator selectedOperator;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +33,27 @@ namespace Calculator
 
         private void Btn_equal_Click(object sender, RoutedEventArgs e)
         {
+            double newNumber;
+            if (double.TryParse(lb_result.Content.ToString(), out newNumber))
+            {
+                switch(selectedOperator)
+                {
+                    case SelectedOperator.Addition:
+                        result = SimpleMath.Add(lastNumber, newNumber);
+                        break;
+                    case SelectedOperator.Division:
+                        result = SimpleMath.Divide(lastNumber, newNumber);
+                        break;
+                    case SelectedOperator.Subtraction:
+                        result = SimpleMath.Subtraction(lastNumber, newNumber);
+                        break;
+                    case SelectedOperator.Multiplication:
+                        result = SimpleMath.Multiply(lastNumber, newNumber);
+                        break;
+                }
 
+                lb_result.Content = result.ToString();
+            }
         }
 
         private void Btn_percent_Click(object sender, RoutedEventArgs e)
@@ -58,85 +79,45 @@ namespace Calculator
             ChangeResultLabel("0");
         }
 
-        private void btn_7_Click(object sender, RoutedEventArgs e)
-        {
-            AppendNumberToLabel("7");
-        }
-
         public void ChangeResultLabel(string change)
         {
             lb_result.Content = change;
         }
 
-
-        private void btn_divide_Click(object sender, RoutedEventArgs e)
+        private void Number_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            string selectedValue = (sender as Button).Content.ToString();
+            AppendNumberToLabel(selectedValue);
         }
 
-        private void btn_8_Click(object sender, RoutedEventArgs e)
+        private void OperationButton_Click(object sender, RoutedEventArgs e)
         {
-            AppendNumberToLabel("8");
-        }
+            if (double.TryParse(lb_result.Content.ToString(), out lastNumber))
+            {
+                ChangeResultLabel("0");
+            }
 
-        private void btn_9_Click(object sender, RoutedEventArgs e)
-        {
-            AppendNumberToLabel("9");
-        }
+            if (sender == btn_times)
+                selectedOperator = SelectedOperator.Multiplication;
+            if (sender == btn_divide)
+                selectedOperator = SelectedOperator.Division;
+            if (sender == btn_plus)
+                selectedOperator = SelectedOperator.Addition;
+            if (sender == btn_minus)
+                selectedOperator = SelectedOperator.Subtraction;
 
-        private void btn_times_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_4_Click(object sender, RoutedEventArgs e)
-        {
-            AppendNumberToLabel("4");
-        }
-
-        private void btn_5_Click(object sender, RoutedEventArgs e)
-        {
-            AppendNumberToLabel("5");
-        }
-
-        private void btn_6_Click(object sender, RoutedEventArgs e)
-        {
-            AppendNumberToLabel("6");
-        }
-
-        private void btn_minus_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_1_Click(object sender, RoutedEventArgs e)
-        {
-            AppendNumberToLabel("1");
-        }
-
-        private void btn_2_Click(object sender, RoutedEventArgs e)
-        {
-            AppendNumberToLabel("2");
-        }
-
-        private void btn_3_Click(object sender, RoutedEventArgs e)
-        {
-            AppendNumberToLabel("3");
-        }
-
-        private void btn_plus_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void btn_0_Click(object sender, RoutedEventArgs e)
-        {
-            AppendNumberToLabel("0");
         }
 
         private void btn_dot_Click(object sender, RoutedEventArgs e)
         {
-
+            if(lb_result.Content.ToString().Contains(","))
+            {
+                //Do nothing
+            }
+            else
+            {
+                lb_result.Content = $"{lb_result.Content},";
+            }
         }
 
         public void AppendNumberToLabel(string input)
@@ -151,6 +132,45 @@ namespace Calculator
                 labelContent = $"{lb_result.Content}{input}";
             }
             ChangeResultLabel(labelContent);
+        }
+    }
+
+    public enum SelectedOperator
+    {
+        Addition,
+        Subtraction,
+        Multiplication,
+        Division
+    }
+
+    public class SimpleMath
+    {
+        public static double Add(double number1, double number2)
+        {
+            return number1 + number2;
+        }
+
+        public static double Subtraction(double number1, double number2)
+        {
+            return number1 - number2;
+        }
+
+        public static double Multiply(double number1, double number2)
+        {
+            return number1 * number2;
+        }
+
+        public static double Divide(double number1, double number2)
+        {
+            if (number2 == 0)
+            {
+                while(true)
+                {
+                    MessageBox.Show("Bist du bescheuert alter??????????? Was hast du gegen mein armes Programm? Was hat es dir angetan das du versuchst es zu verletzen? Ich hoffe du schämst dich in Grund und Boden du Programm Mord versucher!", "Arschloch vorm Bildschirm", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                return 0;
+            }
+            return number1 / number2;
         }
     }
 }

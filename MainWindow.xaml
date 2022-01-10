@@ -38,69 +38,69 @@
                 Grid.Column="2"
                 Margin="5"/>
         <Button x:Name="btn_divide" Content="/"
-                Click="btn_divide_Click"
+                Click="OperationButton_Click"
                 Grid.Row="1"
                 Grid.Column="3"
                 Margin="5"/>
         <Button x:Name="btn_7" Content="7"
-                Click="btn_7_Click"
+                Click="Number_btn_Click"
                 Grid.Row="2"
                 Margin="5"/>
         <Button x:Name="btn_8" Content="8"
-                Click="btn_8_Click"
+                Click="Number_btn_Click"
                 Grid.Row="2"
                 Grid.Column="1"
                 Margin="5"/>
         <Button x:Name="btn_9" Content="9"
-                Click="btn_9_Click"
+                Click="Number_btn_Click"
                 Grid.Row="2"
                 Grid.Column="2"
                 Margin="5"/>
         <Button x:Name="btn_times" Content="*"
-                Click="btn_times_Click"
+                Click="OperationButton_Click"
                 Grid.Row="2"
                 Grid.Column="3"
                 Margin="5"/>
         <Button x:Name="btn_4" Content="4"
-                Click="btn_4_Click"
+                Click="Number_btn_Click"
                 Grid.Row="3"
                 Margin="5"/>
         <Button x:Name="btn_5" Content="5"
-                Click="btn_5_Click"
+                Click="Number_btn_Click"
                 Grid.Row="3"
                 Grid.Column="1"
                 Margin="5"/>
         <Button x:Name="btn_6" Content="6"
-                Click="btn_6_Click"
+                Click="Number_btn_Click"
                 Grid.Row="3"
                 Grid.Column="2"
                 Margin="5"/>
         <Button x:Name="btn_minus" Content="-"
-                Click="btn_minus_Click"
+                Click="OperationButton_Click"
                 Grid.Row="3"
                 Grid.Column="3"
                 Margin="5"/>
         <Button x:Name="btn_1" Content="1"
-                Click ="btn_1_Click"
+                Click="Number_btn_Click"
                 Grid.Row="4"
                 Margin="5"/>
         <Button x:Name="btn_2" Content="2"
-                Click="btn_2_Click"
+                Click="Number_btn_Click"
                 Grid.Row="4"
                 Grid.Column="1"
                 Margin="5"/>
         <Button x:Name="btn_3" Content="3"
-                Click="btn_3_Click"
+                Click="Number_btn_Click"
                 Grid.Row="4"
                 Grid.Column="2"
                 Margin="5"/>
         <Button x:Name="btn_plus" Content="+"
-                Click="btn_plus_Click"
+                Click="OperationButton_Click"
                 Grid.Row="4"
                 Grid.Column="3"
                 Margin="5"/>
         <Button x:Name="btn_0" Content="0"
-                Click="btn_0_Click"
+                Click="Number_btn_Click"
                 Grid.Row="5"
                 Grid.ColumnSpan="2"
                 Margin="5"/>
