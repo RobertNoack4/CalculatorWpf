@@ -24,7 +24,6 @@ namespace Calculator
         public MainWindow()
         {
             InitializeComponent();
-
             btn_ac.Click += Btn_ac_Click;
             btn_negative.Click += Btn_negative_Click;
             btn_percent.Click += Btn_percent_Click;
@@ -68,7 +67,78 @@ namespace Calculator
         {
             lb_result.Content = change;
         }
-        
+
+
+        private void btn_divide_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_8_Click(object sender, RoutedEventArgs e)
+        {
+            AppendNumberToLabel("8");
+        }
+
+        private void btn_9_Click(object sender, RoutedEventArgs e)
+        {
+            AppendNumberToLabel("9");
+        }
+
+        private void btn_times_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_4_Click(object sender, RoutedEventArgs e)
+        {
+            AppendNumberToLabel("4");
+        }
+
+        private void btn_5_Click(object sender, RoutedEventArgs e)
+        {
+            AppendNumberToLabel("5");
+        }
+
+        private void btn_6_Click(object sender, RoutedEventArgs e)
+        {
+            AppendNumberToLabel("6");
+        }
+
+        private void btn_minus_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_1_Click(object sender, RoutedEventArgs e)
+        {
+            AppendNumberToLabel("1");
+        }
+
+        private void btn_2_Click(object sender, RoutedEventArgs e)
+        {
+            AppendNumberToLabel("2");
+        }
+
+        private void btn_3_Click(object sender, RoutedEventArgs e)
+        {
+            AppendNumberToLabel("3");
+        }
+
+        private void btn_plus_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btn_0_Click(object sender, RoutedEventArgs e)
+        {
+            AppendNumberToLabel("0");
+        }
+
+        private void btn_dot_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         public void AppendNumberToLabel(string input)
         {
             string labelContent;
